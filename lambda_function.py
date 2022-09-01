@@ -1,15 +1,16 @@
-import json
+# Teil der Bachelorarbeit im Studiengang Technische Redaktion und Kommunikation Prüfer: Prof. Dr. Nafz
+# Lorenz Ritter von Stein August 2022
+
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-
-def keyfind(input_dict, value):
+def keyfind(input_dict, value):             # Funktion, die den zugehörigen Key einer übergebenen Value aus einem übergebenen Dictionary ausgibt
     for key, val in input_dict.items():
         if val == value: return key
     return "None"
 
 
-def timecheck(stunde, vorlesungsstunde, minute, vorlesungsminute):
+def timecheck(stunde, vorlesungsstunde, minute, vorlesungsminute):  # Funktion die prüft, welcher von 2 übergebenen Zeitpunkten früher liegt.
     if stunde < vorlesungsstunde:
         return 1
     elif stunde == vorlesungsstunde and minute <= vorlesungsminute:
