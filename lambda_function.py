@@ -29,7 +29,7 @@ def vlAbfrage(intent):
     tree = ET.parse('Vorlesungsplan.xml')
     root = tree.getroot()
 
-    tagdict = dict()
+    tagdict = dict()               # legt ein Dictionary an, dass den späteren Einsatz von vergleichsoperatoren ermöglicht. 
     tagdict[0] = "Montag"
     tagdict[1] = "Dienstag"
     tagdict[2] = "Mittwoch"
