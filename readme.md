@@ -14,7 +14,7 @@ VORAUSSETZUNGEN
 
 INHALTE
 
-- lamda_function.py
+- lambda_function.py
 
 - Vorlesungsplan.xml
 
@@ -25,7 +25,7 @@ SCHRITTE
 1) Erstelle in Amazon Lex einen neuen Intent (Beispielsname: "Vorlesungssuche")
 2) Erstelle einige sample utterances, die die Nutzer des Bots fragen könnten wenn sie wissen wollen wann 
    die nächste Vorlesung ist (Beispiel: "Wann ist die nächste {Vorlesungstype} Vorlesung?")
-Achte dabei darauf, dass du möglichst viele verschiedene Varianten diese Frage zu stellen abdeckst.
+   Achte dabei darauf, dass du möglichst viele verschiedene Varianten diese Frage zu stellen abdeckst.
    Erstelle im Bereich "Slots" einen neuen Slot (Beispielname: "VorlesungsType"), damit Lex erkennt, dass es sich 
    bei dem genannten Textabschnitt um einen Parameter handelt, den er später an Lambda übergeben muss. (Weitere Infos in der Dokumenation zu Amazon Lex)
    
