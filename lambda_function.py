@@ -29,7 +29,7 @@ def vlAbfrage(intent):
     tree = ET.parse('Vorlesungsplan.xml')
     root = tree.getroot()
 
-    tagdict = dict()               # legt ein Dictionary an, dass den späteren Einsatz von vergleichsoperatoren ermöglicht. 
+    tagdict = dict()               # legt ein Dictionary an, dass den späteren Einsatz von Vergleichsoperatoren ermöglicht. 
     tagdict[0] = "Montag"
     tagdict[1] = "Dienstag"
     tagdict[2] = "Mittwoch"
@@ -42,7 +42,7 @@ def vlAbfrage(intent):
     vlAnzahl = root.findall((".//*[@vlName='%s']" % intent))
 
     for Vorlesung in root.findall(
-            'Vorlesung'):  # weist den variablen die jeweiligen Werte der aktuell itterierten Vorlesung zu.
+            'Vorlesung'):  # weist den Variablen die jeweiligen Werte der aktuell itterierten Vorlesung zu.
         uhrzeit = Vorlesung.find('Uhrzeit').text
         name = Vorlesung.find("Name").text
         semester = Vorlesung.find("Semester").text
@@ -75,9 +75,9 @@ def vlAbfrage(intent):
         if y == 1:
             break
 
-    if y == 0:
-        for Vorlesung in root.findall("Vorlesung"):
-            name = Vorlesung.find("Name").text
+    if y == 0:                                              # die folgende For-Schleife wird ausgeführt, sofern vorher kein Szenario zutraf.
+        for Vorlesung in root.findall("Vorlesung"):         # in diesem Fall wird die zeitlich in der Woche erstgelegene Vorlesung ausgegeben. 
+            name = Vorlesung.find("Name").text              
             vorlesungstag = Vorlesung.find("Wochentag").text
             uhrzeit = Vorlesung.find('Uhrzeit').text
             vorlesungsstunde = int(uhrzeit[0:2])
@@ -91,7 +91,7 @@ def vlAbfrage(intent):
     return antwort
 
 
-def lambda_handler(event, context):
+def lambda_handler(event, context):     # Übergabe der Parameter von Amazon Lex
     response = {
         "dialogAction": {
             "type": "Close",
@@ -102,7 +102,7 @@ def lambda_handler(event, context):
         }
     }
     print(event)
-    intent = str(event["currentIntent"]["slots"]["VorlesungsType"])
-    response["dialogAction"]["message"]["content"] = vlAbfrage(intent)
+    intent = str(event["currentIntent"]["slots"]["VorlesungsType"]) # der Variable "intent" wird der Value aus dem Gespräch auf Amazon Lex zugeordnet
+    response["dialogAction"]["message"]["content"] = vlAbfrage(intent) # Zur Antwortfindung wird die oben definierte Funktion vlAbfrage() ausgeführt.
 
     return response
